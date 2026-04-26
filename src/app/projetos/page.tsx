@@ -12,28 +12,28 @@ type Project = {
 
 const projects: Project[] = [
   {
-    slug: "exploracao-leste",
-    title: "Exploração Mineira Leste",
-    category: "Operações",
+    slug: "catoca",
+    title: "Sociedade Mineira Catoca",
+    category: "exploração Mineira",
     image: "/images/catoca.jpg",
   },
   {
-    slug: "parceria-xyz",
-    title: "Parceria Internacional XYZ",
-    category: "Parcerias",
-    image: "/images/luaxe.jpg",
+    slug: "endiagro",
+    title: "Projeto Endiagro",
+    category: "Agricultura",
+    image: "/images/projetos/endiagro.webp",
   },
   {
-    slug: "centro-processamento",
-    title: "Centro de Processamento",
-    category: "Infraestrutura",
+    slug: "luele",
+    title: "Projeto Luele",
+    category: "Exploração Mineira",
     image: "/images/luele.jpg",
   },
   {
-    slug: "iniciativa",
-    title: "Iniciativa Sustentável",
-    category: "Sustentabilidade",
-    image: "/images/catoca.jpg",
+    slug: "lueji",
+    title: "Universidade Lueji A'Nkonde",
+    category: "Educação",
+    image: "/images/projetos/lueji.jpg",
   },
 ];
 
