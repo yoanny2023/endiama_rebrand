@@ -56,11 +56,11 @@ function About() {
             </h2>
 
             <p className="mt-6 text-zinc-300 leading-relaxed">
-              A ENDIAMA desempenha um papel estratégico no desenvolvimento do setor mineiro, promovendo a exploração sustentável dos recursos naturais e contribuindo para o crescimento económico do país.
+              A ENDIAMA E.P., fundada a 15 de Janeiro de 1981, é uma empresa nacional vocacionada para prospecção, exploração e comercialização de diamantes. Actua em território nacional como operadora e concessionária exclusiva na gestão da cadeia de valor do subsector diamantífero.
             </p>
 
             <p className="mt-4 mb-6 text-zinc-400">
-              Com uma presença sólida no mercado, a empresa estabelece parcerias globais e investe continuamente em inovação e responsabilidade social.
+              Como empresa pública angolana, a ENDIAMA vive o mesmo clima de transparência e reforma que o resto do nosso país.
             </p>
             <Link className="px-6 py-3 bg-emerald-400 hover:bg-emerald-500 text-black font-medium rounded-md transition duration-500 cursor-pointer" href="/sobre">Saber mais</Link>
           </div>

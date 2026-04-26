@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,8 +35,14 @@ function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         
-        <Link href="/" className="text-lg font-semibold text-white">
-          Endiama
+        <Link href="/">
+          <Image
+          src="/images/logo/logo.svg"
+          alt="Logo"
+          width={100}
+          height={40}
+          priority
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm text-zinc-300">

@@ -8,7 +8,7 @@ export default function SobrePage() {
       
       <section className="relative py-32 text-center bg-zinc-950/85">
         <Container>
-          <div className="absolute inset-0 opacity-7 bg-[url('/patterns/diamond-pattern.svg')] bg-[length:300px] bg-repeat" />
+          <div className="absolute inset-0 opacity-7 bg-[url('/patterns/diamond-pattern2.svg')] bg-[length:300px] bg-repeat" />
           <p className="text-yellow-400 text-sm tracking-widest uppercase">
             Sobre Nós
           </p>
@@ -28,17 +28,18 @@ export default function SobrePage() {
         <Container>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             
-            <div>
+            <div className="text-justify hyphens-auto">
               <h2 className="text-3xl text-zinc-950 font-semibold">
                 A nossa história
               </h2>
 
               <p className="mt-6 text-zinc-900 leading-relaxed">
-                Fundada com o objetivo de transformar a riqueza natural
-                de Angola em valor sustentável, a Endima tem vindo
-                a posicionar-se como um parceiro estratégico na indústria
-                diamantífera, combinando tecnologia, conhecimento local
-                e visão global.
+                A ENDIAMA E.P., fundada a 15 de Janeiro de 1981, é uma empresa nacional vocacionada para prospecção, exploração e comercialização de diamantes. Actua em território nacional como operadora e concessionária exclusiva na gestão da cadeia de valor do subsector diamantífero.
+              </p>
+
+              <p className="mt-6 text-zinc-900 leading-relaxed">
+                Como empresa pública angolana, a ENDIAMA vive o mesmo clima de transparência e reforma que o resto do nosso país. Os pontos focais das reformas no sector diamantífero de Angola estão orientados para o início de novos projectos de prospecção, a implementação da nova política de comercialização de diamantes, 
+                o desenvolvimento de projectos de infraestrutura, bem como das indústrias de energia e agricultura que apoiam a mineração.
               </p>
             </div>
 

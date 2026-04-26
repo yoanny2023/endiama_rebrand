@@ -100,7 +100,7 @@ const [selectedLeader, setSelectedLeader] = useState<Leader | null>(null);
   return (
     <section className="relative py-24 border-t border-zinc-800 bg-zinc-950">
       <Container>
-        <div className="absolute inset-0 opacity-7 bg-[url('/patterns/diamond-pattern.svg')] bg-[length:300px] bg-repeat" />
+        <div className="absolute inset-0 opacity-7 bg-[url('/patterns/diamond-pattern2.svg')] bg-[length:300px] bg-repeat" />
         <h2 className="text-3xl font-semibold text-center text-white">
           Liderança
         </h2>
