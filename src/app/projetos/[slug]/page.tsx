@@ -65,13 +65,13 @@ export default async function ProjectPage({params}: {
 
         <div className="absolute inset-0 bg-black/50" />
 
-        <Container>
+        <Container className="mx-0" centered={false}>
           <div className="relative pb-12">
             <span className="text-yellow-400 text-sm">
               {project.category}
             </span>
 
-            <h1 className="mt-4 text-3xl md:text-5xl font-bold">
+            <h1 className="mt-4 text-3xl md:text-5xl font-bold lg:max-w-xl">
               {project.title}
             </h1>
           </div>

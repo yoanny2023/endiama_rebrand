@@ -13,39 +13,37 @@ type News = {
 
 const news: News[] = [
   {
-    slug: "expansao-leste",
+    slug: "catoca",
     title: "Expansão das operações no Leste de Angola",
     category: "Operações",
-    date: "12 Mar 2026",
+    date: "28 Nov 2023",
     image: "/images/catoca.jpg",
     content: `
-A empresa anunciou a expansão das suas operações mineiras na região leste de Angola, reforçando o compromisso com o crescimento sustentável.
-Este projeto irá aumentar significativamente a capacidade de produção, ao mesmo tempo que introduz novas tecnologias para melhorar a eficiência operacional.
-Além disso, a iniciativa prevê a criação de novos empregos e o fortalecimento das comunidades locais.
+           Este movimento estratégico visa compensar o natural esgotamento das reservas atuais, explorando o potencial geológico das províncias da Lunda Sul e Lunda Norte. Além do incremento na extração de minérios, a expansão deverá impulsionar o desenvolvimento socioeconómico regional através da criação de postos de trabalho diretos e do investimento em infraestruturas locais. 
+           A iniciativa reforça o papel de Angola como um dos principais players no mercado mundial de diamantes, atraindo novos investimentos e tecnologia para o setor mineiro.
     `,
   },
   {
-    slug: "parceria-global",
+    slug: "luele",
     title: "Parceria no Leste de Angola",
     category: "Operações",
-    date: "12 Mar 2026",
+    date: "27 Nov 2023",
     image: "/images/luele.jpg",
     content: `
-A empresa anunciou a expansão das suas operações mineiras na região leste de Angola, reforçando o compromisso com o crescimento sustentável.
-Este projeto irá aumentar significativamente a capacidade de produção, ao mesmo tempo que introduz novas tecnologias para melhorar a eficiência operacional.
-Além disso, a iniciativa prevê a criação de novos empregos e o fortalecimento das comunidades locais.
+      Localizada na região de Saurimo, a nova unidade mineira representa um marco histórico para a economia nacional, com capacidade para processar milhões de toneladas de minério anualmente. Fruto de um investimento estruturante liderado pela Sociedade Mineira de Catoca, o projeto prevê a criação de milhares de postos de trabalho diretos e indiretos, impulsionando o desenvolvimento regional. 
+      Com uma reserva estimada para durar várias décadas, o Luele deverá duplicar a produção de diamantes do país, reforçando a posição de Angola no mercado global e atraindo novos parceiros internacionais para a exploração de recursos minerais.
     `,
   },
   {
     slug: "sustentabilidade",
     title: "Sustentabilidade Leste de Angola",
     category: "Operações",
-    date: "12 Mar 2026",
-    image: "/images/luaxe.jpg",
+    date: "17 Jan 2017",
+    image: "/images/projetos/endiagro.webp",
     content: `
-A empresa anunciou a expansão das suas operações mineiras na região leste de Angola, reforçando o compromisso com o crescimento sustentável.
-Este projeto irá aumentar significativamente a capacidade de produção, ao mesmo tempo que introduz novas tecnologias para melhorar a eficiência operacional.
-Além disso, a iniciativa prevê a criação de novos empregos e o fortalecimento das comunidades locais.
+           O projeto está a ser implementado estrategicamente nas províncias da Lunda Norte, Lunda Sul e Moxico, com o objetivo de reduzir a dependência de importações e combater a pobreza regional através da criação de emprego.
+           Com investimentos em áreas como a Fazenda do Cuilo, a empresa já prepara centenas de hectares para a produção de arroz, milho e feijão, além de apostar na piscicultura. 
+           Esta iniciativa agroindustrial aproveita a infraestrutura do setor diamantífero para gerar novas cadeias de valor, prevendo beneficiar milhares de famílias de agricultores locais e cooperativas ao longo do corredor de desenvolvimento
     `,
   },
 ];
@@ -99,7 +97,7 @@ export default async function NewsPage({
         <Container>
           <article className="max-w-3xl mx-auto">
             
-            <div className="space-y-6 text-lg leading-relaxed text-zinc-700">
+            <div className="space-y-6 text-lg leading-relaxed text-zinc-700 text-justify">
               {article.content.split("\n").map((p, i) =>
                 p.trim() ? <p key={i}>{p}</p> : null
               )}
