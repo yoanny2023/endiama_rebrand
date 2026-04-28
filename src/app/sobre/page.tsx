@@ -62,7 +62,6 @@ export default function SobrePage() {
             trigger: cardsRef.current,
             start: "top 85%",
             toggleActions: "play none none none",
-            markers: true,
           },
         }
       );
