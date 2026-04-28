@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import { IconMenu2, IconX, IconBrandLinkedin } from "@tabler/icons-react";
 import MobileMenu from "@/components/layout/MobileMenu";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,7 +19,9 @@ function Navbar() {
     {name: "Sobre", href: "/sobre"},
     {name: "Projetos", href: "/projetos"},
     {name: "Notícias", href: "/noticias"},
-  ]
+  ];
+  
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -28,6 +32,12 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useGSAP(() => {
+    gsap.set(".gsap_link",{y:-300,opacity:0});
+
+    gsap.to(".gsap_link",{y:0,opacity:1,ease:"linear",duration:1,stagger:0.1})
+  },[])
+  
   return (
     <>
     <header
@@ -60,7 +70,7 @@ function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={` ${active ? "text-emerald-400 font-medium": "text-white"}
-                hover:text-emerald-500 duration-500 transition`}
+                 gsap_link hover:text-emerald-500 duration-500 transition`}
             >
               {link.name}
             </Link>
