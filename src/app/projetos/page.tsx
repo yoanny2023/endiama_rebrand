@@ -1,7 +1,12 @@
-import React from 'react'
+"use client"
+
+import React, { useRef } from 'react'
 import Container from '@/components/layout/Container';
 import Image from "next/image";
 import Link from 'next/link';
+import { useGSAP } from '@gsap/react';
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type Project = {
   slug: string
@@ -38,6 +43,58 @@ const projects: Project[] = [
 ];
 
 export default function ProjetosPage() {
+
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+    useGSAP(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline();
+   
+      tl.from(".title",{y:30,opacity:0,ease:"power3.inOut",duration:0.8})
+        .from(".subtitle",{y:30,opacity:0,ease:"power3.inOut",duration:0.5},">-0.5");
+  
+        if (containerRef.current) {
+         const btn = Array.from(containerRef.current.children);
+  
+        gsap.fromTo(btn,
+        {
+          y: 30,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.2,
+        }
+      );
+    }
+        if (cardsRef.current) {
+         const cards = Array.from(cardsRef.current.children);
+  
+        gsap.fromTo(
+        cards,
+        {
+          y: 30,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 85%",
+          },
+        }
+      );
+    }
+  },[]);
+
   return (
     <main className="bg-zinc-950 text-white">
       
@@ -48,10 +105,10 @@ export default function ProjetosPage() {
             Projetos
           </p>
 
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold">
+          <h1 className="title mt-4 text-4xl md:text-5xl font-bold">
             Os nossos projetos estratégicos
           </h1>
-          <p className="mt-6 text-zinc-400 max-w-2xl mx-auto">
+          <p className="subtitle mt-6 text-zinc-400 max-w-2xl mx-auto">
             Iniciativas que impulsionam o crescimento sustentável
             e posicionam Angola no mercado global.
           </p>
@@ -60,8 +117,9 @@ export default function ProjetosPage() {
 
       <section className="pb-12">
         <Container>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {["Todos", "Operações", "Parcerias", "Infraestrutura", "Sustentabilidade"].map((item, i) => (
+          <div ref={containerRef}
+            className="flex flex-wrap gap-3 justify-center">
+            {["Todos", "Operações", "Parcerias","Sustentabilidade"].map((item, i) => (
               <button
                 key={i}
                 className="px-4 py-2 text-sm rounded-full border border-zinc-800 text-zinc-300 
@@ -76,7 +134,9 @@ export default function ProjetosPage() {
 
       <section className="pb-24">
         <Container>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div 
+            ref={cardsRef}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {projects.map((project, i) => (
               <Link
