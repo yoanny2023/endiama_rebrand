@@ -7,40 +7,7 @@ import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-type Project = {
-  slug: string
-  title: string;
-  category: string;
-  image: string;
-};
-
-const projects: Project[] = [
-  {
-    slug: "catoca",
-    title: "Sociedade Mineira Catoca",
-    category: "Exploração Mineira",
-    image: "/images/catoca.jpg",
-  },
-  {
-    slug: "endiagro",
-    title: "Projeto Endiagro",
-    category: "Agricultura",
-    image: "/images/projetos/endiagro.webp",
-  },
-  {
-    slug: "luele",
-    title: "Projeto Luele",
-    category: "Exploração Mineira",
-    image: "/images/luele.jpg",
-  },
-  {
-    slug: "lueji",
-    title: "Universidade Lueji A'Nkonde",
-    category: "Educação",
-    image: "/images/projetos/lueji.jpg",
-  },
-];
+import { projects } from '@/data/projetos/projetos';
 
 const categories = [
   { label: "Todos", value: "all" },
