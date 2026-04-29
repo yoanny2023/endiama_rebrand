@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Container from '@/components/layout/Container';
 import Image from "next/image";
 import Link from 'next/link';
@@ -19,7 +19,7 @@ const projects: Project[] = [
   {
     slug: "catoca",
     title: "Sociedade Mineira Catoca",
-    category: "exploração Mineira",
+    category: "Exploração Mineira",
     image: "/images/catoca.jpg",
   },
   {
@@ -42,10 +42,23 @@ const projects: Project[] = [
   },
 ];
 
+const categories = [
+  { label: "Todos", value: "all" },
+  { label: "Operações", value: "Exploração Mineira" },
+  { label: "Parcerias", value: "Educação" },
+  { label: "Sustentabilidade", value: "Agricultura" },
+];
+
+
 export default function ProjetosPage() {
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const cardsRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const filteredProjects = activeCategory === "all"
+                          ? projects
+                          : projects.filter((p) => p.category === activeCategory);
   
     useGSAP(() => {
       gsap.registerPlugin(ScrollTrigger);
@@ -93,7 +106,7 @@ export default function ProjetosPage() {
         }
       );
     }
-  },[]);
+  },[activeCategory]);
 
   return (
     <main className="bg-zinc-950 text-white">
@@ -119,13 +132,18 @@ export default function ProjetosPage() {
         <Container>
           <div ref={containerRef}
             className="flex flex-wrap gap-3 justify-center">
-            {["Todos", "Operações", "Parcerias","Sustentabilidade"].map((item, i) => (
+            {categories.map((item, i) => (
               <button
                 key={i}
-                className="px-4 py-2 text-sm rounded-full border border-zinc-800 text-zinc-300 
-                hover:text-emerald-500 hover:border-zinc-600 transition duration-300"
+                onClick={() => setActiveCategory(item.value)}
+                className={`px-4 py-2 text-sm rounded-full border transition duration-500 cursor-pointer
+                ${activeCategory === item.value  
+                      ? "border-emerald-500 text-emerald-500"
+                      : "border-zinc-800 text-zinc-300 hover:text-emerald-500 hover:border-zinc-600"
+                 } 
+                `}
               >
-                {item}
+                {item.label}
               </button>
             ))}
           </div>
@@ -138,7 +156,7 @@ export default function ProjetosPage() {
             ref={cardsRef}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {projects.map((project, i) => (
+            {filteredProjects.map((project, i) => (
               <Link
                 href={`/projetos/${project.slug}`}
                 key={i}
