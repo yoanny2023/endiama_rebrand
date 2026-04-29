@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
 import {ScrollTrigger} from "gsap/ScrollTrigger"
-import { SplitText } from 'gsap/all';
 import Link from 'next/link'
 
  function Hero() {
@@ -14,15 +13,12 @@ import Link from 'next/link'
 
   useGSAP(() => {  
       gsap.registerPlugin(ScrollTrigger);
-      gsap.registerPlugin(SplitText);
-
-      const headerSplit = new SplitText(titleRef.current,{type:"chars,words"});
-
-      gsap.set([subtitleRef.current,".hero-btn"],{y:40,opacity:0});
-
+  
       const tl = gsap.timeline();
 
-      tl.from(headerSplit.chars,{yPercent:100,ease:"expo.out",duration:1,stagger: 0.03})
+      gsap.set([titleRef.current,subtitleRef.current,".hero-btn"],{y:40,opacity:0});
+
+      tl.to(titleRef.current,{y: 0,opacity: 1,duration: 0.8,ease: "power3.out"})
         .to(subtitleRef.current,{y: 0,opacity: 1,duration: 0.8,ease: "power3.out"},"-=0.5")
         .to(".hero-btn",{y: 0,opacity: 1,duration: 0.6,stagger: 0.2,ease: "power3.out"},"-=0.4")
 
