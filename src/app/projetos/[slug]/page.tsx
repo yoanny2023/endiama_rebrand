@@ -1,4 +1,5 @@
 import Container from "@/components/layout/Container";
+import DynamicPageAnimation from "@/components/ui/DynamicPageAnimation";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -41,10 +42,10 @@ const projects: Project[] = [
   }
 ];
 
-export default async function ProjectPage({params}: {
-  params: Promise<{ slug: string }>
-}
-) {
+export default async function ProjectPage({
+  params
+}: {params: Promise<{ slug: string }>}) {
+
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
 
@@ -52,46 +53,46 @@ export default async function ProjectPage({params}: {
 
   return (
     <main className="bg-zinc-950 text-white">
-      
-      <section className="relative h-[60vh] flex items-end">
-        
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover"
-          priority
-        />
+      <DynamicPageAnimation> 
+        <section className="relative h-[60vh] flex items-end">
+          
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+            priority
+          />
 
-        <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/50" />
 
-        <Container className="mx-0" centered={false}>
-          <div className="relative pb-12">
-            <span className="text-yellow-400 text-sm">
-              {project.category}
-            </span>
+          <Container className="mx-0" centered={false}>
+            <div className="heading relative pb-12">
+              <span className="text-yellow-400 text-sm">
+                {project.category}
+              </span>
 
-            <h1 className="mt-4 text-3xl md:text-5xl font-bold lg:max-w-xl">
-              {project.title}
-            </h1>
-          </div>
-        </Container>
-      </section>
+              <h1 className="mt-4 text-3xl md:text-5xl font-bold lg:max-w-xl">
+                {project.title}
+              </h1>
+            </div>
+          </Container>
+        </section>
 
-      <section className="py-24 bg-white text-zinc-900">
-        <Container>
-          <div className="max-w-3xl">
-            <h2 className="text-2xl font-semibold">
-              Sobre o projeto
-            </h2>
+        <section className="py-24 bg-white text-zinc-900">
+          <Container>
+            <div className="text-block max-w-3xl">
+              <h2 className="text-2xl font-semibold">
+                Sobre o projeto
+              </h2>
 
-            <p className="mt-6 leading-relaxed text-zinc-700 text-justify hyphens-auto">
-              {project.description}
-            </p>
-          </div>
-        </Container>
-      </section>
-
+              <p className="mt-6 leading-relaxed text-zinc-700 text-justify hyphens-auto">
+                {project.description}
+              </p>
+            </div>
+          </Container>
+        </section>
+      </DynamicPageAnimation>
       <section className="py-24 border-t border-zinc-800">
         <Container>
           <div className="grid md:grid-cols-3 gap-8">

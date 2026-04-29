@@ -89,7 +89,7 @@ export default function NoticiasPage() {
          ease: "power3.out",
          scrollTrigger: {
            trigger: cardsRef.current,
-           start: "top 80%",
+           start: "top bottom",
            scrub:2,
          },
        })

@@ -1,4 +1,5 @@
 import Container from "@/components/layout/Container";
+import DynamicPageAnimation from "@/components/ui/DynamicPageAnimation";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -61,52 +62,53 @@ export default async function NewsPage({
 
   return (
     <main className="bg-zinc-950 text-white">
-      
-      <section className="relative h-[60vh] flex items-end">
-        
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          className="object-cover"
-          priority
-        />
+      <DynamicPageAnimation>
+        <section className="relative h-[60vh] flex items-end">
+          
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            className="object-cover"
+            priority
+          />
 
-        <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/50" />
 
-        <Container>
-          <div className="relative pb-12 max-w-3xl">
-            
-            <span className="text-yellow-400 text-sm">
-              {article.category}
-            </span>
+          <Container>
+            <div className="heading relative pb-12 max-w-3xl">
+              
+              <span className="text-yellow-400 text-sm">
+                {article.category}
+              </span>
 
-            <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-tight">
-              {article.title}
-            </h1>
+              <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-tight">
+                {article.title}
+              </h1>
 
-            <p className="mt-4 text-sm text-zinc-300">
-              {article.date}
-            </p>
+              <p className="mt-4 text-sm text-zinc-300">
+                {article.date}
+              </p>
 
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-24 bg-white text-zinc-900">
-        <Container>
-          <article className="max-w-3xl mx-auto">
-            
-            <div className="space-y-6 text-lg leading-relaxed text-zinc-700 text-justify">
-              {article.content.split("\n").map((p, i) =>
-                p.trim() ? <p key={i}>{p}</p> : null
-              )}
             </div>
+          </Container>
+        </section>
 
-          </article>
-        </Container>
-      </section>
+        <section className="py-24 bg-white text-zinc-900">
+          <Container>
+            <article className="text-block max-w-3xl mx-auto">
+              
+              <div className="space-y-6 text-lg leading-relaxed text-zinc-700 text-justify">
+                {article.content.split("\n").map((p, i) =>
+                  p.trim() ? <p key={i}>{p}</p> : null
+                )}
+              </div>
 
+            </article>
+          </Container>
+        </section>
+      
+      </DynamicPageAnimation>
       <section className="py-24 border-t border-zinc-800">
         <Container>
           <h2 className="text-2xl font-semibold">
