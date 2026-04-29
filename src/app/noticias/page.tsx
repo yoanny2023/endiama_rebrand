@@ -1,10 +1,15 @@
-import React from 'react'
+"use client"
+
+import React, { useRef } from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import Container from '@/components/layout/Container';
+import { useGSAP } from '@gsap/react';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type News = {
-  slug: string;
+  slug: string;   
   title: string;
   category: string;
   date: string;
@@ -40,8 +45,55 @@ const news: News[] = [
 ];
 
 export default function NoticiasPage() {
+  const textRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
   const featured = news[0];
   const rest = news.slice(1);
+  
+    useGSAP(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline();
+   
+      tl.from(".title",{y:30,opacity:0,ease:"power3.inOut",duration:0.8})
+        .from(".subtitle",{y:30,opacity:0,ease:"power3.inOut",duration:0.5},">-0.5")
+        .from(imageRef.current, {
+         x: -150,
+         opacity: 0,
+         scale:0.95,
+         duration: 1,
+         delay: 0.2,
+         ease: "power3.out",
+         scrollTrigger: {
+           trigger: imageRef.current,
+           start: "top 80%",
+           scrub:2,
+         },
+       })
+       .from(textRef.current, {
+         y: 50,
+         opacity: 0.5,
+         duration: 1,
+         ease: "power3.out",   
+         scrollTrigger: {
+           trigger: textRef.current,
+           start: "10% 85%",
+           scrub:2,
+         },
+       })
+       .from(cardsRef.current, {
+         y: 50,
+         opacity: 0.5,
+         duration: 1,
+         ease: "power3.out",
+         scrollTrigger: {
+           trigger: cardsRef.current,
+           start: "top 80%",
+           scrub:2,
+         },
+       })
+  },[]);
 
   return (
     <main className="bg-zinc-950 text-white">
@@ -53,11 +105,11 @@ export default function NoticiasPage() {
             Notícias
           </p>
 
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold">
+          <h1 className="title mt-4 text-4xl md:text-5xl font-bold">
             Atualizações e Insights
           </h1>
 
-          <p className="mt-6 text-zinc-400 max-w-2xl mx-auto">
+          <p className="subtitle mt-6 text-zinc-400 max-w-2xl mx-auto">
             Acompanhe as últimas novidades, parcerias e iniciativas da empresa.
           </p>
         </Container>
@@ -70,7 +122,8 @@ export default function NoticiasPage() {
             className="grid md:grid-cols-2 gap-12 items-center group"
           >
             
-            <div className="relative h-80 rounded-xl overflow-hidden">
+            <div ref={imageRef}
+              className="relative h-80 rounded-xl overflow-hidden">
               <Image
                 src={featured.image}
                 alt={featured.title}
@@ -81,7 +134,7 @@ export default function NoticiasPage() {
               />
             </div>
 
-            <div>
+            <div ref={textRef}>
               <span className="text-yellow-500 text-sm">
                 {featured.category}
               </span>
@@ -107,7 +160,7 @@ export default function NoticiasPage() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section ref={cardsRef} className="py-24">
         <Container>
           <div className="max-w-4xl mx-auto divide-y divide-zinc-800">
             
